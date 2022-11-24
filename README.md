@@ -1,2 +1,2 @@
-# 30daysDSA
-A challenge which helps to learn DSA in a month ,In this repo I would be adding problems what am I solving on each day.
+Here , i collected all the problems what am i doing while learning DSA.
+Each topic contains all the problems what i am practicing while learning that topic
