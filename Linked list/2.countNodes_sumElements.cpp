@@ -1,3 +1,6 @@
+//creating a linked list and traversing through it 
+
+     
 #include<iostream>
 using namespace std;
 
@@ -10,9 +13,29 @@ class Node
 		Node *next;
 };
 
-//creating  linked list
-void create(int arr[] , int n , Node *first)
+class LinkedList
 {
+	private:
+		Node *first;
+	public:
+		LinkedList(){
+			first = NULL;
+		}
+		
+		LinkedList(int arr[] , int n);
+		void display();
+		void countSum();
+		
+};
+
+
+//creating a linked list
+LinkedList :: LinkedList(int arr[] , int n)
+{
+	
+	first = new Node ;
+	first->data = arr[0];
+	first->next = NULL;
 	Node *last ;
 	last = first;
 	
@@ -27,11 +50,21 @@ void create(int arr[] , int n , Node *first)
 	}
 }
 
+void LinkedList :: display() {
+	
+	Node *p;
+	p = first ;
+	while ( p ) { 
+		cout << p->data << " ";
+		p = p->next ;    //updating of pointer
+	}
+}
 
 //------------------------number of nodes , sum of all elements in linked list ------------------------
 
-void countSum ( Node *p)
+void LinkedList :: countSum ()
 {
+	Node *p = first ;
 	int sum=0 , count = 0;
 	while (p)
 	{
@@ -48,13 +81,10 @@ void countSum ( Node *p)
 int main()
 {
 	int arr[5] = {1,2,3,4,5} ;
-	Node *first ;
-	first = new Node ;
-	first->data = arr[0];
-	first->next = NULL;
 	
-	create(arr , 5 , first);
-	countSum( first );
+	LinkedList l (arr ,5 );
+	
+	l.countSum();
 	
 	return 0;
 }
