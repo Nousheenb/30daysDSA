@@ -1,5 +1,6 @@
-//creating and traversing a liked list
+//creating a linked list and traversing through it 
 
+     
 #include<iostream>
 using namespace std;
 
@@ -12,9 +13,28 @@ class Node
 		Node *next;
 };
 
-//creating  linked list
-void create(int arr[] , int n , Node *first)
+class LinkedList
 {
+	private:
+		Node *first;
+	public:
+		LinkedList(){
+			first = NULL;
+		}
+		
+		LinkedList(int arr[] , int n);
+		void display();
+		
+};
+
+
+//creating a linked list
+LinkedList :: LinkedList(int arr[] , int n)
+{
+	
+	first = new Node ;
+	first->data = arr[0];
+	first->next = NULL;
 	Node *last ;
 	last = first;
 	
@@ -29,9 +49,10 @@ void create(int arr[] , int n , Node *first)
 	}
 }
 
-//traversing through a linked list
-void display(Node *p) {
+void LinkedList :: display() {
 	
+	Node *p;
+	p = first ;
 	while ( p ) { 
 		cout << p->data << " ";
 		p = p->next ;    //updating of pointer
@@ -39,27 +60,13 @@ void display(Node *p) {
 }
 
 
-//traversing through a linked list recursively
-void recDisplay(Node *p) {
-	
-	if ( p ) {
-		cout << p->data << " ";
-		recDisplay(p->next) ;  //recursive call
-	}
-}
-
 int main()
 {
-	int arr[5] = {1,2,3,4,5} ;
-	Node *first ;
-	first = new Node ;
-	first->data = arr[0];
-	first->next = NULL;
+	int arr[10] = {99,89,79,48,5} ;
 	
-	create(arr , 5 , first);
-	display(first);
-	cout<<endl;
-	recDisplay(first);
+	LinkedList l(arr , 5);
 	
+	l.display();
+	 
 	return 0;
 }
