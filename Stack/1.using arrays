@@ -1,0 +1,101 @@
+#include<iostream>
+using namespace std;
+
+struct MyStack
+{
+    int cap ;  //capacity of stack
+    int *stack ;  //pointer array
+    int top ; //holds the index value of top item or the recent item of stack
+    MyStack(int capacity)
+    {
+        cap = capacity ;
+        top = -1; // no item is there , so initialised to -1
+        stack = new int[cap] ;
+    }
+    
+    void push(int ele)
+    {
+        if ( top == cap - 1)  // to check whether stack is full or not
+        {
+            cout<<"stack overflow: stack is full"<<endl;
+        }
+        else
+        {
+            stack[++top] = ele ; //pre increment 
+        }
+    }
+    
+    int pop()
+    {
+        //to check whether the stack is empty
+        if ( top == -1)
+        {
+            cout<<"stack underflow: stack is empty"<<endl;
+        }
+        else
+        {
+            top-- ;
+        }
+        return stack[top+1] ; //the element which is popped
+    }
+    
+    int size()
+    {
+        return top+1 ; //no of elements in stack
+    }
+    
+    void display()
+    {
+        cout<<"The elements in stack top to bottom ---> ";
+        for(int i=top ; i>=0 ;i-- )
+        {
+            cout<<stack[i]<<" ";
+        }
+        cout<<endl;
+    }
+    
+    bool empty()
+    {
+        if(top == -1)
+        {
+            return 1;
+        }
+        else{
+            return 0;
+        }
+        
+    }
+    
+    int peek()  // the top element of stack
+    {
+        return stack[top] ;
+    }
+    
+};
+
+int main()
+{
+    MyStack s(10) ;
+    
+    //insertion
+    s.push(10) ;
+    s.push(20) ;
+    s.push(30) ;
+    s.push(40) ;
+    s.push(50) ;
+    
+    //size befor popping
+    cout<<"Size of stack before popping----> "<<s.size()<<endl;
+    s.display() ;
+    
+    //deletion
+    cout<<"The popped item is--> "<<s.pop()<<endl;
+    cout<<"Size of stack after popping----> "<<s.size()<<endl;
+    s.display();
+    
+    cout<<"Is stack empty--> "<<s.empty()<<endl;
+    
+    cout<<"The top element is ---> "<<s.peek()<<endl;
+    
+    return 0;
+}
