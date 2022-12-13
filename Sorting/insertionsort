@@ -1,0 +1,32 @@
+
+#include <iostream>
+using namespace std;
+
+void insertionSort(int arr[] , int n)
+{
+   for(int i=1 ;i<n ;i++)  //element at 0 index is already sorted
+   {
+       int j = i-1 ; // index of last element in sorted part of array
+       int x = arr[i] ;
+       
+       while( j>-1 && arr[j] > x)  
+       {
+           arr[j+1] = arr[j] ; //shifting of elements till smaller element is found
+           j-- ;
+       }
+       arr[j+1] = x ; //insertion
+   }
+    
+}
+int main() {
+    
+    int  arr[4] = {4,3,2,1} ;
+    
+    insertionSort(arr , 4);
+    
+    for(int i=0 ; i<4 ;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
