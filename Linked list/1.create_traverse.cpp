@@ -22,7 +22,7 @@ class LinkedList
 			first = NULL;
 		}
 		
-		LinkedList(int arr[] , int n);
+		LinkedList(int arr[] , int n);   //constructor
 		void display();
 		
 };
