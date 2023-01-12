@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+class Queue
+{
+    int *arr ;
+    int rear ;  //points to index of last element in queue
+    int front ; //points to an index-infront of first element
+    int size ;
+    
+    public :
+    Queue(int size)
+    {
+        this->size = size ;
+        arr = new int[this->size] ;
+        front = rear = -1 ;
+    }
+    void enqueue(int x) ;
+    int deque();
+    void display() ;
+};
+
+void Queue :: enqueue(int x)
+{
+    if(rear == size-1)
+    {
+        cout<<"queue is full" ;
+    }
+    else
+    {
+        rear ++;
+        arr[rear] = x;
+    }
+}
+int Queue :: deque()
+{
+    int x=-1 ;
+    if(rear == front)
+    {
+        cout<<"queue is empty "<<endl;
+    }
+    else
+    {
+        front ++;
+        x = arr[front];
+    }
+    return x;
+}
+void Queue :: display()
+{
+    for(int i = front+1 ; i<=rear ; i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+int main()
+{
+    Queue q(10);
+    q.enqueue(10) ;
+    q.enqueue(11);
+    q.enqueue(13) ;
+    cout<<q.deque()<<endl;
+    q.display();
+    return 0;
+}
